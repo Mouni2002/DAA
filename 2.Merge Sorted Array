@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n){
+for(int i = 0 ; i < n ; i++){
+int num = nums2[i];
+int j = m-1;
+while(j >= 0 && nums1[j] > num){
+nums1[j+1] = nums1[j];
+j--;
+}
+nums1[j+1] = num;
+m++;
+}
+}
+
+int main()
+{
+        int n1,m1,n,m,a,b;
+        scanf("%d",&n1);
+        int nums1[n1];
+        for(int i=0;i<n1;i++)
+        {
+                scanf("%d",&a);
+                nums1[i]=a;
+        }
+        scanf("%d",&m1);
+        int nums2[m1];
+        for(int i=0;i<m1;i++)
+        {
+                scanf("%d",&a);
+                nums2[i]=a;
+        }
+        scanf("%d %d",&n,&m);
+        merge(nums1,n1,m,nums2,m1,n);
+        for(int i=0;i<(m+n);i++)
+        {
+            printf("%d",nums1[i]);
+        }
+        
+}
