@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+char *reversewords(char *s){
+    int n=strlen(s),top=-1,k=0;
+    char stack[n],ch;
+    char *r=malloc(n+1);
+    for(int i=n-1;i>=0;i--)
+    {
+        ch=s[i];
+        if(ch!=' '){
+            stack[++top]=ch;
+        }
+        else if(ch==' '&&top!=-1){
+         
+            while(top>=0){
+                r[k]=stack[top];
+                k++;
+                top--;
+            }
+            r[k++]=' ';
+        }
+    }
+    if(top!=-1)
+    {
+        while(top>=0)
+        {
+            r[k]=stack[top];
+            k++;
+            top--;
+        }
+    }
+    if(s[0]==' ')
+    {
+        r[k-1]='\0';
+    }
+    r[k]='\0';
+    return r;
+}
+void main(){
+    char *s;
+    printf("enter string");
+    scanf("%[^\n]",s);
+    char *r=reversewords(s);
+    printf("after sorting string is:\n%s",r);
+}
+
+o/p:
+
+enter stringthe sky is blue
+after sorting string is:
+blue is sky the
